@@ -10,16 +10,25 @@
 
 #import "CustomTabHolder.h"
 
-IB_DESIGNABLE
+@class CustomTabBar;
+
+@protocol CustomTabBarDataSource <NSObject>
+@required
+
+- ( UIView *) customTabBar:(CustomTabBar *)customTabBar titleViewForTabAtIndex:(NSUInteger)index;
+- (UIView *) customTabBar:(CustomTabBar *)customTabBar contentViewForTabAtIndex:(NSUInteger) index;
+- (NSUInteger) numberOfTabsInCustomTabBar:(CustomTabBar *)customTabBar;
+
+@end
+
+
 
 @interface CustomTabBar : UIView
 
+@property (weak, nonatomic) id<CustomTabBarDataSource> dataSource;
 
-@property (strong, nonatomic) UIColor *tabBackgroundColor;
-@property (strong, nonatomic) UIColor *tabTintColor;
-
-@property (strong, nonatomic) NSArray<CustomTabHolder*> *tabs;
-
+@property (strong, nonatomic) UIColor * tabBackgroundColor;
+@property (strong, nonatomic) UIColor * tabTintColor;
 
 
 @end

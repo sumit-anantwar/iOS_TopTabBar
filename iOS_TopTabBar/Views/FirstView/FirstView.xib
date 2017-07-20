@@ -5,7 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstView">
+            <connections>
+                <outlet property="container" destination="iN0-l3-epB" id="LEH-ZF-fFs"/>
+                <outlet property="tableView" destination="p44-aA-GwE" id="N0R-9n-mm2"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="547" height="600"/>
@@ -24,6 +29,8 @@
                 <constraint firstItem="p44-aA-GwE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rtr-QN-igE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="571.5" y="482"/>
         </view>

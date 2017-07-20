@@ -18,21 +18,29 @@
 @property (weak, nonatomic) IBOutlet UIView *segmentContainer;
 @property (weak, nonatomic) IBOutlet PointerView *pointer;
 
+@property (strong, nonatomic) NSMutableArray *titleViews;
+@property (strong, nonatomic) NSMutableArray *contentViews;
+
 @end
 
 @implementation CustomTabBar
 
 #pragma mark - Getters & Setters
 
-- (void) setTabs:(NSArray<CustomTabHolder *> *)tabs
+- (NSMutableArray *) titleViews
 {
-    if (![_tabs isEqualToArray:tabs]) {
-        
-        _tabs = tabs;
-        
-        [self setupTabs];
-    }
+    if (!_titleViews) _titleViews = [[NSMutableArray alloc] init];
+    
+    return _titleViews;
 }
+
+- (NSMutableArray *) contentViews
+{
+    if (!_contentViews) _contentViews = [[NSMutableArray alloc] init];
+    
+    return _contentViews;
+}
+
 
 - (void) setTabBackgroundColor:(UIColor *)tabBackgroundColor
 {
@@ -52,6 +60,15 @@
         
         self.segmentedControl.tintColor = tabTintColor;
         self.pointer.pointerColor = tabTintColor;
+    }
+}
+
+- (void) setDataSource:(id<CustomTabBarDataSource>)dataSource
+{
+    if (![_dataSource isEqual:dataSource]) {
+        
+        _dataSource = dataSource;
+        [self setupTabs];
     }
 }
 
@@ -109,16 +126,26 @@
 
 - (void) setupTabs
 {
+    if (!self.dataSource) {
+        return;
+    }
+    
     [self.segmentedControl removeAllSegments];
     
-    for (int i = 0; i < self.tabs.count; i++) {
+    NSUInteger tabCount = [self.dataSource numberOfTabsInCustomTabBar:self];
+    
+    for (int i = 0; i < tabCount; i++) {
         
-        CustomTabHolder *tab = self.tabs[i];
+        UIView *titleView = [self.dataSource customTabBar:self titleViewForTabAtIndex:i];
+        UIView *contentView = [self.dataSource customTabBar:self contentViewForTabAtIndex:i];
         
         [self.segmentedControl insertSegmentWithTitle:@"" atIndex:i animated:NO];
         
-        [self.container addSubview:tab.titleView];
-        tab.titleView.userInteractionEnabled = NO;
+        [self.container addSubview:titleView];
+        titleView.userInteractionEnabled = NO;
+        
+        [self.titleViews addObject:titleView];
+        [self.contentViews addObject:contentView];
     }
     
     self.segmentedControl.selectedSegmentIndex = 0;
@@ -130,19 +157,27 @@
 
 - (void) layoutSubviews
 {
-    CGFloat tvWidth = self.segmentedControl.frame.size.width / self.tabs.count;
+    NSUInteger tabCount = [self.dataSource numberOfTabsInCustomTabBar:self];
+    
+    CGFloat tvWidth = self.segmentedControl.frame.size.width / tabCount;
     CGFloat tvHeight = self.segmentedControl.frame.size.height;
     
-    for (int i = 0; i < self.tabs.count; i++) {
+    for (int i = 0; i < tabCount; i++) {
         
-        CustomTabHolder *tab = self.tabs[i];
+        if (i < self.titleViews.count) {
+            
+            UIView *titleView = self.titleViews[i];
+            CGFloat tvX = i *tvWidth;
+            CGFloat tvY = 0.0f;
+            
+            titleView.frame = CGRectMake(tvX, tvY, tvWidth, tvHeight);
+        }
         
-        CGFloat tvX = i *tvWidth;
-        CGFloat tvY = 0.0f;
-        
-        tab.titleView.frame = CGRectMake(tvX, tvY, tvWidth, tvHeight);
-        
-        tab.contentView.frame = self.segmentContainer.bounds;
+        if (i < self.contentViews.count) {
+            
+            UIView *contentView =  self.contentViews[i];
+            contentView.frame = self.segmentContainer.bounds;
+        }
     }
     
     if (self.segmentedControl.selectedSegmentIndex >= 0){
@@ -167,10 +202,10 @@
 
 - (void) selectSegmentAtIndex:(NSUInteger)index
 {
-    CustomTabHolder *tab = self.tabs[index];
+    UIView *contentView = (index < self.contentViews.count) ? self.contentViews[index] : nil;
     
     [self.segmentContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self.segmentContainer addSubview:tab.contentView];
+    [self.segmentContainer addSubview:contentView];
     
     [self setNeedsLayout];
 }

@@ -11,7 +11,7 @@
 @implementation CustomTabHolder
 
 
-+ (CustomTabHolder *) tabWithTitleView:(CustomTabTitleView *)titleView andContentView:(UIView *)contentView;
++ (CustomTabHolder *) tabWithTitleView:(UIView *)titleView andContentView:(UIView *)contentView;
 {
     CustomTabHolder *tab    = [[self alloc] init];
     tab.titleView           = titleView;

@@ -13,10 +13,10 @@
 
 @interface CustomTabHolder : NSObject
 
-@property (strong, nonatomic) CustomTabTitleView *titleView;
+@property (strong, nonatomic) UIView *titleView;
 @property (strong, nonatomic) UIView *contentView;
 
 
-+ (CustomTabHolder *) tabWithTitleView:(CustomTabTitleView *)titleView andContentView:(UIView *)contentView;
++ (CustomTabHolder *) tabWithTitleView:(UIView *)titleView andContentView:(UIView *)contentView;
 
 @end

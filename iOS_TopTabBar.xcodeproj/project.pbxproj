@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F07CC1DD1F20846A004D1E68 /* FirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = F07CC1DC1F20846A004D1E68 /* FirstView.m */; };
 		F0CBDE0E1F1FACC9004BA7FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CBDDF01F1FACC9004BA7FF /* AppDelegate.m */; };
 		F0CBDE0F1F1FACC9004BA7FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0CBDDF11F1FACC9004BA7FF /* Assets.xcassets */; };
 		F0CBDE101F1FACC9004BA7FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0CBDDF21F1FACC9004BA7FF /* LaunchScreen.storyboard */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F07CC1DB1F20846A004D1E68 /* FirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstView.h; sourceTree = "<group>"; };
+		F07CC1DC1F20846A004D1E68 /* FirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstView.m; sourceTree = "<group>"; };
 		F0CBDDEF1F1FACC9004BA7FF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0CBDDF01F1FACC9004BA7FF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F0CBDDF11F1FACC9004BA7FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,16 +67,16 @@
 			isa = PBXGroup;
 			children = (
 				F0CBDDEF1F1FACC9004BA7FF /* AppDelegate.h */,
+				F0CBDE081F1FACC9004BA7FF /* ViewController.h */,
 				F0CBDDF01F1FACC9004BA7FF /* AppDelegate.m */,
+				F0CBDE071F1FACC9004BA7FF /* main.m */,
+				F0CBDE091F1FACC9004BA7FF /* ViewController.m */,
+				F0CBDE061F1FACC9004BA7FF /* Info.plist */,
 				F0CBDDF11F1FACC9004BA7FF /* Assets.xcassets */,
-				F0CBDDF21F1FACC9004BA7FF /* LaunchScreen.storyboard */,
-				F0CBDDF41F1FACC9004BA7FF /* Main.storyboard */,
 				F0CBDDF61F1FACC9004BA7FF /* CustomTabBar */,
 				F0CBDE041F1FACC9004BA7FF /* Fonts */,
-				F0CBDE061F1FACC9004BA7FF /* Info.plist */,
-				F0CBDE071F1FACC9004BA7FF /* main.m */,
-				F0CBDE081F1FACC9004BA7FF /* ViewController.h */,
-				F0CBDE091F1FACC9004BA7FF /* ViewController.m */,
+				F0CBDDF21F1FACC9004BA7FF /* LaunchScreen.storyboard */,
+				F0CBDDF41F1FACC9004BA7FF /* Main.storyboard */,
 				F0CBDE0A1F1FACC9004BA7FF /* Views */,
 			);
 			path = iOS_TopTabBar;
@@ -141,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				F0CBDE0C1F1FACC9004BA7FF /* FirstView.xib */,
+				F07CC1DB1F20846A004D1E68 /* FirstView.h */,
+				F07CC1DC1F20846A004D1E68 /* FirstView.m */,
 			);
 			path = FirstView;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0CBDE1B1F1FACC9004BA7FF /* ViewController.m in Sources */,
+				F07CC1DD1F20846A004D1E68 /* FirstView.m in Sources */,
 				F0CBDE121F1FACC9004BA7FF /* CustomTabBar.m in Sources */,
 				F0CBDE141F1FACC9004BA7FF /* CustomTabHolder.m in Sources */,
 				F0CBDE151F1FACC9004BA7FF /* CustomTabTitleView.m in Sources */,
